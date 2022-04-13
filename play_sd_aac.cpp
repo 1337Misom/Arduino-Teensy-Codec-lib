@@ -192,6 +192,7 @@ void AudioPlaySdAac::setupDecoder(int channels, int samplerate, int profile)
 }
 
 int AudioPlaySdAac::play(void){
+	fseek(startpos);
 	lastError = ERR_CODEC_NONE;
 	initVars();
 	sd_buf = allocBuffer(AAC_SD_BUF_SIZE);
@@ -225,7 +226,7 @@ int AudioPlaySdAac::play(void){
 	}
 	else { //NO MP4. Do we have an ID3TAG ?
 
-		fseek(0);
+		fseek(startpos);
 		//Read-ahead 10 Bytes to detect ID3
 		sd_left = fread(sd_buf, 10);
 		//Skip ID3, if existent
@@ -238,7 +239,7 @@ int AudioPlaySdAac::play(void){
 			//Serial.print("ID3");
 		} else size_id3 = 0;
 	}
-
+	fseek(startpos);
 	//Fill buffer from the beginning with fresh data
 	sd_left = fillReadBuffer(file, sd_buf, sd_buf, sd_left, AAC_SD_BUF_SIZE);
 
