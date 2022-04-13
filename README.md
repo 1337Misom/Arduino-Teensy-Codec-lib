@@ -1,6 +1,8 @@
 Arduino-Teensy-Codec-lib
 ======================
 
+I modified this library so aac can be played with an offset.
+
 Audiolibrary plugin, plays up to 320 kbps MP3, MP4(AAC), M4A(AAC), AAC-Raw or FLAC in software without external hardware - 
 with only 48MHz.
 
