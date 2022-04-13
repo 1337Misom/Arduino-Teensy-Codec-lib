@@ -226,7 +226,7 @@ int AudioPlaySdAac::play(void){
 	}
 	else { //NO MP4. Do we have an ID3TAG ?
 
-		fseek(startpos);
+		fseek(0);
 		//Read-ahead 10 Bytes to detect ID3
 		sd_left = fread(sd_buf, 10);
 		//Skip ID3, if existent
