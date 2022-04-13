@@ -149,7 +149,7 @@ public:
 	static unsigned	decode_cycles_read;
 	static unsigned decode_cycles_max;
 	static unsigned decode_cycles_max_read;
-
+	uint64_t startpos = 0;
 protected:
 
 	unsigned		samples_played;
